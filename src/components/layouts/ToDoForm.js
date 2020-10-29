@@ -92,7 +92,7 @@ export default function ToDoForm() {
                           value={type.id}
                           key={index}
                         >
-                          {type.type}{" "}
+                          {type.type.replace("_"," ")}{" "}
                         </option>
                       ))}
                     </Field>

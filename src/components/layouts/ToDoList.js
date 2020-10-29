@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ToDoItem from "./ToDoItem";
 import axios from "axios";
+import { FaSortUp, FaSortDown } from 'react-icons/fa';
+
 
 export default function ToDoList() {
   const toDoAPI = "http://localhost:8080/api/v1/todos";
@@ -31,8 +33,8 @@ export default function ToDoList() {
     <div className="toDoContainer">
       <div className=" sortForm">
         <span>Sort by expiring day :</span>
-        <button className="sortButton" onClick={sortByDateAsc}>ASC</button>
-        <button className="sortButton" onClick={sortByDateDesc}>DESC</button>
+        <button className="sortButton" onClick={sortByDateAsc}><FaSortUp /></button>
+        <button className="sortButton" onClick={sortByDateDesc}><FaSortDown/></button>
       </div>
       {toDos.map((toDo,index) => {
         return <ToDoItem toDo={toDo} key={index}/>
