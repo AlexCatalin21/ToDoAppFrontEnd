@@ -12,9 +12,31 @@ export default function ToDoList() {
       setToDos(res.data);
       console.log(res.data);
     });
-  }, [toDoAPI]);
+  }, []);
+
+  const sortByDateAsc = () =>{
+    setToDos(
+      [...toDos].sort((a, b) =>
+        a.expiringDate > b.expiringDate ? 1 : -1
+      )
+    );
+  }
+
+  const sortByDateDesc = () =>{
+    setToDos(
+      [...toDos].sort((a, b) =>
+        a.expiringDate > b.expiringDate ? -1 : 1
+      )
+    );
+  }
   return (
     <div className="toDoContainer">
+      <div className=" mb-4 ">
+        <span>Sort by expiring day :</span>
+        <button onClick={sortByDateAsc}>Asc</button>
+        <button onClick={sortByDateDesc}>Desc</button>
+
+      </div>
       {toDos.map((toDo,index) => {
         return <ToDoItem toDo={toDo} key={index}/>
       })}

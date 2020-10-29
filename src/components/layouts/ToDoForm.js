@@ -35,6 +35,7 @@ export default function ToDoForm() {
                 console.log(values);
               }
             });
+            window.location.reload();
         }}
       >
          {({ values, setFieldValue }) => (

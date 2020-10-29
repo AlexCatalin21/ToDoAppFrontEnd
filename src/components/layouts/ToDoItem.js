@@ -4,8 +4,23 @@ import axios from "axios";
 
 
 export default function ToDoItem(props) {
+
+  const [markAsDone, setMarkAsDone]=useState()
   console.log(props);
   const deleteAPI = "http://localhost:8080/api/v1/todos/delete/"+ props.toDo.id;
+  const updateAPI = "http://localhost:8080/api/v1/todos/update/"+ props.toDo.id
+
+  const getRemainingTime = () =>{
+    const diffTime = Math.abs(new Date(props.toDo.expiringDate) - new Date());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    console.log(diffDays);
+    if (diffDays <= 1 & props.toDo.status.id !== 2){
+      return "toDoInfo text-danger"
+    } else {
+      return "toDoInfo"
+    }
+  }
+    
 
   const handleDelete = () => {
     
@@ -14,23 +29,36 @@ export default function ToDoItem(props) {
           console.log(res);
         }
       });
+      window.location.reload()
     }
+
+  const handleDone = ()=>{
+    axios.put(updateAPI,{completionDate:new Date(),statusId:2}).then((res) => {
+      if (res.status === 200) {
+        console.log(res)
+        console.log(props.toDo.completionTime)
+        setMarkAsDone(true)
+      }
+    })
+    window.location.reload();
+  }  
   
   return (
     <div className="toDOItemContainer">
       <h4>{props.toDo.description}</h4>
       <div className="toDoDetails">
         <div className="toDoInfo">Creation Date: {props.toDo.creationDate ? props.toDo.creationDate.split("T")[0] : null} |</div>
-        <div className="toDoInfo">Expiring Date : {props.toDo.expiringDate ? props.toDo.expiringDate.split("T")[0] : null} |</div>
+        <div className={getRemainingTime()}>Expiring Date : {props.toDo.expiringDate ? props.toDo.expiringDate.split("T")[0] : null} |</div>
         <div className="toDoInfo">Allocated Days: {props.toDo.allocatedTime} |</div>
         <div className="toDoInfo">Estimated Spent Days: {props.toDo.estimatedDays} |</div>
-        <div className="toDoInfo">Completion Time: {props.toDo.completionTime ? props.toDo.completionTime.split("T")[0]: null} |</div>
-        <div className="toDoInfo">
+        <div className="toDoInfo">Completion Time: {props.toDo.completionDate ? props.toDo.completionDate.split("T")[0]: null} |</div>
+        {props.toDo.status.id === 2  ? null : <div className="toDoDetails"><div className="toDoInfo">
         <Button variant="danger" onClick={handleDelete}>Delete</Button> |
         </div>
         <div className="toDoInfo">
-        <Button variant="success">Done</Button>
-      </div>
+        <Button variant="success" onClick={handleDone}>Done</Button>
+      </div></div>}
+        
     </div>
     </div>
   );
