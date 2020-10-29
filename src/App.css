@@ -105,3 +105,21 @@
   margin:3px;
   border-radius: 3px;
 }
+
+.homeToDo{
+  background-color: aqua;
+  border: 1px solid #ccc!important;
+  border-radius: 15px;
+}
+
+.workToDo{
+  background-color: burlywood;
+  border: 1px solid #ccc!important;
+  border-radius: 15px;
+}
+
+.freeTimeToDo{
+  background-color: blueviolet;
+  border: 1px solid #ccc!important;
+  border-radius: 15px;
+}

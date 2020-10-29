@@ -19,6 +19,20 @@ export default function ToDoItem(props) {
       return "toDoInfo"
     }
   }
+
+  const setColorByType = ()=> {
+    if (props.toDo.type.id === 1){
+      return "homeToDo"
+    }else{
+      if (props.toDo.type.id === 2) {
+        return "workToDo"
+      }else { if (props.toDo.type.id ===3){
+        return "freeTimeToDo"
+      }}
+    }
+    
+    
+  }
     
 
   const handleDelete = () => {
@@ -42,7 +56,7 @@ export default function ToDoItem(props) {
   }  
   
   return (
-    <div className="toDOItemContainer">
+    <div className={setColorByType()}>
       <h4>{props.toDo.description}</h4>
       <div className="toDoDetails">
         <div className="toDoInfo">Creation Date: {props.toDo.creationDate ? props.toDo.creationDate.split("T")[0] : null} |</div>
