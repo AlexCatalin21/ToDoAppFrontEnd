@@ -15,27 +15,24 @@ export default function ToDoList() {
   }, []);
 
   const sortByDateAsc = () =>{
-    setToDos(
-      [...toDos].sort((a, b) =>
+    setToDos([...toDos].sort((a, b) =>
         a.expiringDate > b.expiringDate ? 1 : -1
       )
     );
   }
 
   const sortByDateDesc = () =>{
-    setToDos(
-      [...toDos].sort((a, b) =>
+    setToDos([...toDos].sort((a, b) =>
         a.expiringDate > b.expiringDate ? -1 : 1
       )
     );
   }
   return (
     <div className="toDoContainer">
-      <div className=" mb-4 ">
+      <div className=" sortForm">
         <span>Sort by expiring day :</span>
-        <button onClick={sortByDateAsc}>Asc</button>
-        <button onClick={sortByDateDesc}>Desc</button>
-
+        <button className="sortButton" onClick={sortByDateAsc}>ASC</button>
+        <button className="sortButton" onClick={sortByDateDesc}>DESC</button>
       </div>
       {toDos.map((toDo,index) => {
         return <ToDoItem toDo={toDo} key={index}/>

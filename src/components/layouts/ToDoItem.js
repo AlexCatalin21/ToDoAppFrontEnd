@@ -1,11 +1,10 @@
-import React,{useEffect,useState} from "react";
+import React from "react";
 import {Button} from "react-bootstrap"
 import axios from "axios";
 
 
 export default function ToDoItem(props) {
 
-  const [markAsDone, setMarkAsDone]=useState()
   console.log(props);
   const deleteAPI = "http://localhost:8080/api/v1/todos/delete/"+ props.toDo.id;
   const updateAPI = "http://localhost:8080/api/v1/todos/update/"+ props.toDo.id
@@ -37,7 +36,6 @@ export default function ToDoItem(props) {
       if (res.status === 200) {
         console.log(res)
         console.log(props.toDo.completionTime)
-        setMarkAsDone(true)
       }
     })
     window.location.reload();

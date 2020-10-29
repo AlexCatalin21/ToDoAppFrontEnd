@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ToDoList from "./ToDoList";
 import ToDoForm from "./ToDoForm"
 import { Button, Modal } from "react-bootstrap";
@@ -15,12 +15,11 @@ export default function Home() {
       <Button variant="primary" className="addButton" onClick={handleShow}>
         Add new task
       </Button>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>What's going on</Modal.Title>
         </Modal.Header>
-        <Modal.Body><ToDoForm onSubmit={handleClose}/></Modal.Body>
+        <Modal.Body><ToDoForm/></Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

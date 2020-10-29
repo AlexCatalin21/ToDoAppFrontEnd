@@ -96,3 +96,12 @@
   padding-top: 50px;
   padding-bottom: 50px;
 }
+
+.sortForm{
+  text-align: right;
+}
+
+.sortButton{
+  margin:3px;
+  border-radius: 3px;
+}
