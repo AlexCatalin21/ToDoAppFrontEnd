@@ -62,3 +62,37 @@
 .display-none {
   display: none;
 }
+
+.toDoDetails {
+  display: inline-flex;
+}
+
+ .toDOItemContainer  {
+  border: 1px solid #ccc!important;
+  border-radius: 15px;
+}
+/* .toDOItemContainer:nth-last-child(1) {
+  background: red;
+} */
+
+.toDoInfo {
+  margin: 3px;
+}
+
+.addButton {
+  margin: 10px;
+}
+
+.toDoContainer {
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
+.toDoList {
+  border: 1px solid #ccc!important;
+  margin-left: 20%;
+  margin-right:20%;
+  margin-bottom: 5%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}

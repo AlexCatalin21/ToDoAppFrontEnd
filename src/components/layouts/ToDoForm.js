@@ -57,11 +57,9 @@ export default function ToDoForm() {
                         <Field
                       as="select"
                       name="typeId"
-                      className="typeSelect "
                     >
                       {toDoTypes.map((type, index) => (
                         <option
-                          className="selectOptions"
                           value={type.id}
                           key={index}
                         >
